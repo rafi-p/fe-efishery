@@ -1,0 +1,29 @@
+@import "../../constant/Colors.scss";
+@import "../../constant/Fonts.scss";
+@import "../../constant/Sizes.scss";
+
+
+.container {
+  padding: 0px 20px;
+  background-color: $greenDefault;
+  display: flex;
+  align-items: center;
+  .logo {
+    width: 200px;
+    transition: opacity .3s;
+    cursor: pointer;
+
+    @media screen and (max-width: 768px){
+      width: 120px;
+    }
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+  &.text {
+    color: $white
+  }
+
+}
+

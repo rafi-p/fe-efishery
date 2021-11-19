@@ -1,0 +1,3 @@
+export default {
+  GET_PRODLIST_SUCCESS: 'GET_PRODLIST_SUCCESS',
+};
