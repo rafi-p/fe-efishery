@@ -2,7 +2,8 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import {
-  Dashboard
+  Dashboard,
+  AddProduct
 } from '../screens';
 
 let publicRoutes =  [
@@ -10,12 +11,16 @@ let publicRoutes =  [
       path: '/',
       component: Dashboard,
     },
+    {
+      path: '/add-product',
+      component: AddProduct,
+    },
   ]
 
 const Router = props => {
 
   return (
-    <ConnectedRouter history={ props.history }>
+    // <ConnectedRouter history={ props.history }>
     <Switch>
       {
         publicRoutes.map(route =>
@@ -26,9 +31,9 @@ const Router = props => {
           />
         )
       }
-      {/* <Redirect to={ '/not-found' }/> */}
+      {/* <Redirect to={ '/' }/> */}
     </Switch>
-    </ConnectedRouter>
+    // </ConnectedRouter>
   );
 };
 

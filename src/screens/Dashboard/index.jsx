@@ -290,8 +290,6 @@ const Dashboard = props => {
     )
   }
 
-  console.log({dataMain, loading})
-
   return (
     <div className='container-dashboard'>
       <div className="wrapper-content">

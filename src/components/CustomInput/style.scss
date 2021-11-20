@@ -1,0 +1,57 @@
+@import "../../constant/Colors.scss";
+@import "../../constant/Fonts.scss";
+
+
+.container-input {
+
+  .text-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: $greenDefault
+  }
+  input {
+      padding: 0 15px;
+      border: 1px solid $greenDefault;
+      height: 28px;
+      border-radius: 5px;
+      font-family: $regular;
+      width: 250px;
+      &:focus-visible {
+          outline: unset;
+      }
+      margin-top: 5px;
+  }
+
+
+  select{
+    height: 30px;
+    cursor: pointer;
+    padding: 0 15px;
+    border: 1px solid $greenDefault;
+    border-radius: 5px;
+    font-family: $regular;
+    margin-top: 5px;
+    width: 282px;
+
+    &:focus-visible {
+        outline: unset;
+    }
+  }
+  @media screen and (max-width: 768px){
+    width: calc(100% - 10px);
+  }
+
+
+  @media screen and (max-width: 280px){
+    select{
+      width: calc(100vw - 48px);
+    }
+    input {
+      width: calc(100vw - 80px);
+    }
+  }
+}
+
+
+
+

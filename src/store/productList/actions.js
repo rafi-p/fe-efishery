@@ -37,6 +37,20 @@ export const getProdList = (dispatch, getState) => (params, body) => {
   });
 };
 
+export const addProd = (dispatch, getState) => (params, body) => {
+  return new Promise(async(resolve, reject) => {
+    const apiFetch = await prodListServices.addProd(params, body);
+
+    const { status, data, statusText } = apiFetch;
+
+    if (status === 200) {
+      resolve(dispatch(getProdListSuccess({ data: data })));
+    } else {
+      reject(statusText);
+    }
+  });
+};
+
 export const getArea = (dispatch, getState) => (params, body) => {
   return new Promise(async(resolve, reject) => {
     const apiFetch = await prodListServices.getArea(params, body);

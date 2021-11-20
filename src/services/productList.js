@@ -3,7 +3,6 @@ import { convert, customFetch } from '../helpers/index';
 
 export const getProdList = async(params, data) => {
   const setProdList = cats => {
-    // .replace(/./g,"")
     let newArr = cats.map((cat, i) => {
       return {
         area_kota: cat.area_kota,
@@ -34,6 +33,23 @@ export const getProdList = async(params, data) => {
   }
 };
 
+export const addProd = async(params, data) => {
+
+  try {
+
+    const response = await customFetch(`${Endpoints.url}${Endpoints.param.list}`, 'POST', data, false);
+
+    if (response.data) {
+      response.data = response.data;
+    } else {
+      response.data = {};
+    }
+    return response
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getArea= async(params, data) => {
   const setArea = cats => {
     let payload = {
@@ -44,7 +60,11 @@ export const getArea= async(params, data) => {
       payload.cities.push(cat.city)
       payload.provinces.push(cat.province)
     });
-    return payload;
+    if(params && params.add) {
+      return cats
+    } else {
+      return payload;
+    }
   };
 
   try {
