@@ -97,12 +97,11 @@ const AddProduct = props => {
     .then(res => {
       toast.success("Success Adding Product!", {
         position: "top-center",
-        autoClose: 30000000,
-        hideProgressBar: false,
+        autoClose: 3000,
+        hideProgressBar: true,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         draggable: false,
-        progress: undefined,
       });
 
       props.history.push('/')

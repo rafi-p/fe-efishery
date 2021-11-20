@@ -62,7 +62,9 @@ export const getArea= async(params, data) => {
     }
     cats.forEach((cat, i) => {
       payload.cities.push(cat.city)
-      payload.provinces.push(cat.province)
+      if(!payload.provinces.includes(cat.province)) {
+        payload.provinces.push(cat.province)
+      }
     });
     if(params && params.add) {
       return cats
