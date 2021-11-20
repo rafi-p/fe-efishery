@@ -20,7 +20,11 @@ export const getProdList = async(params, data) => {
 
   try {
 
-    const response = await customFetch(`${Endpoints.url}${Endpoints.param.list}`, 'GET', data, false);
+    const uri = params
+    ?`?search={"${params.category ? params.category : ''}":"${params.keyword ? params.keyword : ''}"}`
+    : ''
+
+    const response = await customFetch(`${Endpoints.url}${Endpoints.param.list}${uri}`, 'GET', data, false);
 
     if (response.data) {
       response.data = setProdList(response.data);

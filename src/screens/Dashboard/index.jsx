@@ -141,27 +141,21 @@ const Dashboard = props => {
     setDataSort(temp)
   }
 
-  const filteringData = (data, filterOpt) => {
-    setLoading(true)
-    let temp = [...data]
-    temp = temp.filter((el, i) => {
-      if(selectedFilter.includes('komoditas')) {
-        return (el[filterOpt.category] ? el[filterOpt.category] : '').toLowerCase().includes((filterOpt ? filterOpt : '').keyword.toLowerCase())
-      }
-      if(!selectedFilter.includes('komoditas')) {
-        return el[filterOpt.category] === filterOpt.keyword
-      }
-    })
-    setDataSort(temp)
-    clickSort(temp);
-  }
-
   const clickFilter = (keyword) => {
     let filter = {
       category: selectedFilter,
       keyword: selectedFilter.includes('size') || selectedFilter.includes('price') ? Number(keyword) : keyword
     }
-    filteringData(dataProdList, filter);
+    setLoading(true)
+    getProdList(filter)
+    .then((res) => {
+      clickSort(res.payload.data)
+    })
+    .catch((err) => {
+    })
+    .finally(() => {
+      setLoading(false)
+    })
   }
 
   const clickSort = (main) => {
@@ -180,7 +174,13 @@ const Dashboard = props => {
     setSelectedSort('')
     setSortAsc(true)
     setSearchKeyword('')
-    setDataMain(dataProdList)
+    setLoading(true)
+    getProdList()
+    .then(res => {})
+    .catch(err => {})
+    .finally(() => {
+      setLoading(false)
+    })
   }
   const onChangeSearch = (e) => {
       setSearchKeyword(e.target.value)
