@@ -9,6 +9,7 @@ import {
 } from '../../constant/index'
 import { v4 as uuid } from 'uuid';
 import { convert } from '../../helpers/index';
+import { toast } from 'react-toastify';
 import * as prodListActions from '../../store/productList/actions';
 
 const AddProduct = props => {
@@ -94,6 +95,16 @@ const AddProduct = props => {
     setLoading(true)
     addProd({}, payload)
     .then(res => {
+      toast.success("Success Adding Product!", {
+        position: "top-center",
+        autoClose: 30000000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+      });
+
       props.history.push('/')
     })
     .catch(err => {
