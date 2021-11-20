@@ -20,6 +20,7 @@ const Dashboard = props => {
   const [dataMain, setDataMain] = useState([])
   const [dataSort, setDataSort] = useState([])
   const [searchKeyword, setSearchKeyword] = useState('')
+  const [firstLoad, setFirstLoad] = useState(true)
 
   const dataProdList = useSelector(state => state.prodList.data);
   const getProdList = dispatch(prodListActions.getProdList);
@@ -35,6 +36,7 @@ const Dashboard = props => {
     .catch(err => {})
     .finally(() => {
       setLoading(false)
+      setFirstLoad(false)
     })
     getArea()
     getSize()
@@ -299,15 +301,16 @@ const Dashboard = props => {
         <FilterWrapper/>
         <RenderTable/>
         {
-          loading &&
+          (loading || firstLoad) &&
           <div className='loading'>
             <img src={Images.loading} alt="" />
             Loading
           </div>
         }
         {
-          !loading && dataMain.length === 0 &&
+          !loading && dataMain.length === 0 && !firstLoad &&
           <div className='loading'>
+            <img src={Images.noData} className='noData' alt="" />
             No Data
           </div>
         }
