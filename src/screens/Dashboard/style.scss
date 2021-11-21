@@ -57,6 +57,10 @@
     }
     table {
         width: 100%;
+        table-layout: fixed;
+        @media screen and (max-width: 768px){
+            table-layout: unset;
+        }
         thead {
             position: sticky;
             top: 0;
@@ -77,12 +81,17 @@
             padding: 10px 10px;
             border-bottom: 1px solid $grayLight;
             font-size: 12px;
+            vertical-align: middle;
         }
 
         th {
             padding: 15px 10px;
             font-weight: 600;
             white-space: nowrap;
+
+            &.green-head {
+                color: $greenDefault
+            }
         }
         th:after{
             content:'';

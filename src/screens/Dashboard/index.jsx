@@ -16,6 +16,7 @@ const Dashboard = props => {
   const [loading, setLoading] = useState(false)
   const [selectedFilter, setSelectedFilter] = useState('')
   const [selectedSort, setSelectedSort] = useState('')
+  const [sortingId, setSortingId] = useState('')
   const [sortAsc, setSortAsc] = useState(true)
   const [dataMain, setDataMain] = useState([])
   const [dataSort, setDataSort] = useState([])
@@ -166,6 +167,7 @@ const Dashboard = props => {
       category: selectedSort,
       asc:  sortAsc
     }
+    setSortingId(selectedSort)
     if(selectedSort) {
       sortingData(data, order)
     }
@@ -177,6 +179,7 @@ const Dashboard = props => {
     setSortAsc(true)
     setSearchKeyword('')
     setLoading(true)
+    setSortingId('')
     getProdList()
     .then(res => {})
     .catch(err => {})
@@ -242,14 +245,37 @@ const Dashboard = props => {
     )
   }
 
+
+
   const dataTh = [
-    'No.',
-    'Comodity',
-    'Price',
-    'Size',
-    'City',
-    'Province',
-    'Date Added'
+    {
+      label: 'No.',
+      value: 'no'
+    },
+    {
+      label: 'Comodity',
+      value: 'komoditas'
+    },
+    {
+      label: 'Price',
+      value: 'price'
+    },
+    {
+      label: 'Size',
+      value: 'size'
+    },
+    {
+      label: 'City',
+      value: 'area_kota'
+    },
+    {
+      label: 'Province',
+      value: 'area_provinsi'
+    },
+    {
+      label: 'Data added',
+      value: 'tgl_parsed'
+    },
   ]
 
   const RenderTable = () => {
@@ -261,7 +287,7 @@ const Dashboard = props => {
               {
                 dataTh.map((el, i) => {
                   return (
-                    <th key={i}>{el}</th>
+                    <th className={`${el.value === sortingId ? 'green-head' : ''}`} key={i}>{el.label}</th>
                   )
                 })
               }

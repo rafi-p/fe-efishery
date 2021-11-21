@@ -17,6 +17,7 @@
     border-radius: 5px;
     font-family: $regular;
     width: 250px;
+    background: $white;
 
     &:hover {
       border: 1px solid $blackDark;
@@ -52,9 +53,11 @@
     width: 282px;
     color: $grayDark;
     transition: all .3s;
+    background: $white;
 
     option {
       color: $blackDark;
+      font: -moz-pull-down-menu;
     }
 
     &:hover {

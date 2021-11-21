@@ -91,6 +91,7 @@ const CustomFilter = props => {
                     event.preventDefault();
                   }
                 }}
+                disabled={props.selectedValue ? false : true}
               />
             </div>
             :
