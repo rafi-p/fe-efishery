@@ -10,18 +10,36 @@
     color: $greenDefault
   }
   input {
-      padding: 0 15px;
-      border: 1px solid $greenDefault;
-      height: 28px;
-      border-radius: 5px;
-      font-family: $regular;
-      width: 250px;
-      &:focus-visible {
-          outline: unset;
-      }
-      margin-top: 5px;
-  }
+    transition: all .3s;
+    padding: 0 15px;
+    border: 1px solid $greenDefault;
+    height: 28px;
+    border-radius: 5px;
+    font-family: $regular;
+    width: 250px;
 
+    &:hover {
+      border: 1px solid $blackDark;
+    }
+    &::placeholder {
+      color: $grayDark;
+    }
+    &:focus-visible {
+        outline: unset;
+    }
+    margin-top: 5px;
+  }
+  &:focus-within {
+    .text-header {
+      color: $blackDark
+    }
+    input {
+      border: 1px solid $blackDark;
+    }
+    select {
+      border: 1px solid $blackDark;
+    }
+  }
 
   select{
     height: 30px;
@@ -32,9 +50,19 @@
     font-family: $regular;
     margin-top: 5px;
     width: 282px;
+    color: $grayDark;
+    transition: all .3s;
+
+    option {
+      color: $blackDark;
+    }
+
+    &:hover {
+      border: 1px solid $blackDark;
+    }
 
     &:focus-visible {
-        outline: unset;
+        outline: none;
     }
   }
   @media screen and (max-width: 768px){

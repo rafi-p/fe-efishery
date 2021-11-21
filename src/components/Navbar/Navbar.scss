@@ -9,14 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 80px;
+
+  @media screen and (max-width: 768px){
+    height: 45px;
+  }
   .logo {
-    width: 200px;
+    height: 100%;
     transition: opacity .3s;
     cursor: pointer;
-
-    @media screen and (max-width: 768px){
-      width: 120px;
-    }
 
     &:hover {
       opacity: .8;
