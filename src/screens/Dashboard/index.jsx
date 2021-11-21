@@ -48,8 +48,24 @@ const Dashboard = props => {
       setDataMain(dataProdList)
     }
   },[
-    dataProdList
+    dataProdList,
   ])
+
+  useEffect(() => {
+    if(
+      props.history.location &&
+      props.history.location.state &&
+      props.history.location.state.order &&
+      Object.keys(props.history.location.state.order) !== 0 &&
+      dataProdList && firstLoad
+    ) {
+      let order = props.history.location.state.order
+      setSelectedSort(order.category)
+      setSortAsc(order.asc)
+      setSortingId(order.category)
+      clickSort(dataProdList, order)
+    }
+  }, [firstLoad,dataProdList, props.history])
 
   useEffect(() => {
     if(dataSort) {
@@ -161,9 +177,9 @@ const Dashboard = props => {
     })
   }
 
-  const clickSort = (main) => {
+  const clickSort = (main, param) => {
     let data = main ? main : dataMain
-    let order = {
+    let order = param ? param : {
       category: selectedSort,
       asc:  sortAsc
     }

@@ -103,8 +103,14 @@ const AddProduct = props => {
         pauseOnHover: false,
         draggable: false,
       });
-
-      props.history.push('/')
+      let order= {
+        category: 'tgl_parsed',
+        asc: false
+      }
+      props.history.push({
+        pathname: '/',
+        state: { order: order}
+      })
     })
     .catch(err => {
     })

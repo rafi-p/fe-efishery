@@ -41,7 +41,6 @@
       border: 1px solid $blackDark;
     }
   }
-
   select{
     height: 30px;
     cursor: pointer;
@@ -56,9 +55,10 @@
     background: $white;
 
     option {
-      color: $blackDark;
+      color: $blackDark !important;
       font: -moz-pull-down-menu;
     }
+
 
     &:hover {
       border: 1px solid $blackDark;
